@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyRun - JetBrains 激活工具</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e4e4e4;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .card h2 {
+            color: #00d9ff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .cmd-box {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        .cmd-box code {
+            color: #00ff88;
+        }
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .copy-btn:hover { background: #2ea043; }
+        .os-label {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+        .windows { background: #0078d4; }
+        .linux { background: #dd4814; }
+        .mac { background: #555; }
+        .warning {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            color: #ffc107;
+        }
+        .warning h3 { margin-bottom: 0.5rem; }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        a { color: #00d9ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔑 KeyRun</h1>
+        <p class="subtitle">JetBrains 全家桶激活工具 - 学习研究用途</p>
+
+        <div class="card">
+            <h2>📋 使用方法</h2>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <span class="os-label windows">Windows</span>
+                <p style="margin-bottom: 0.5rem; color: #aaa;">使用 Win + X，选择 PowerShell (管理员) 运行：</p>
+                <div class="cmd-box">
+                    <button class="copy-btn" onclick="copyCmd(this)">复制</button>
+                    <code>irm https://liyangxu1.github.io/keyrun/scripts/install.ps1 | iex</code>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <span class="os-label linux">Linux</span>
+                <p style="margin-bottom: 0.5rem; color: #aaa;">打开终端执行：</p>
+                <div class="cmd-box">
+                    <button class="copy-btn" onclick="copyCmd(this)">复制</button>
+                    <code>curl -fsSL https://liyangxu1.github.io/keyrun/scripts/install.sh | bash</code>
+                </div>
+            </div>
+
+            <div>
+                <span class="os-label mac">macOS</span>
+                <p style="margin-bottom: 0.5rem; color: #aaa;">打开终端执行：</p>
+                <div class="cmd-box">
+                    <button class="copy-btn" onclick="copyCmd(this)">复制</button>
+                    <code>curl -fsSL https://liyangxu1.github.io/keyrun/scripts/install.sh | bash</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>✅ 支持产品</h2>
+            <p style="color: #aaa; line-height: 1.8;">
+                IntelliJ IDEA、CLion、PhpStorm、GoLand、PyCharm、WebStorm、
+                Rider、DataGrip、RubyMine、AppCode、DataSpell、RustRover 等
+            </p>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ 免责声明</h3>
+            <p>本工具仅供学习和研究使用。请支持正版软件，商业用途请购买官方许可证。</p>
+        </div>
+
+        <footer>
+            <p>Powered by <a href="https://github.com/liyangxu1/keyrun">GitHub</a> | 基于 ja-netfilter</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyCmd(btn) {
+            const code = btn.parentElement.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = '已复制!';
+                setTimeout(() => btn.textContent = '复制', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

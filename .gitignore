@@ -1,0 +1,12 @@
+# 临时文件
+*.tmp
+*.log
+generate_licenses.ps1
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
