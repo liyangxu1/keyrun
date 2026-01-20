@@ -1,10 +1,14 @@
-﻿# encoding: utf-8
+# encoding: utf-8
 
-Clear-Host
+# 先设置控制台代码页为 UTF-8
+chcp 65001 | Out-Null
+
+# 设置 PowerShell 输入输出编码
 $OutputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 [Console]::InputEncoding = [System.Text.Encoding]::UTF8
-chcp 65001 | Out-Null
+
+Clear-Host
 
 $script:enable_debug = $false
 
@@ -424,6 +428,9 @@ function Read-Valid_Date([string]$prompt, [string]$default = "2099-12-31")
 # 显示 KeyRun ASCII Logo
 function Show-Ascii_Jetbrains
 {
+    # 使用 Unicode 转义确保中文正确显示
+    $author = [char]0x9152 + [char]0x6C8F + [char]0x8336  # 酒沏茶
+    
     Write-Host @"
 
  _  __          ____              
@@ -434,7 +441,7 @@ function Show-Ascii_Jetbrains
           |___/                   
 "@ -ForegroundColor Cyan
     Write-Host "      JetBrains Activation Tool" -ForegroundColor White
-    Write-Host "                        By 酒沏茶`n" -ForegroundColor DarkGray
+    Write-Host "                        By $author`n" -ForegroundColor DarkGray
 }
 
 # 获取属性值（idea.properties）
@@ -896,8 +903,10 @@ function Main
     Process_Vm_Options
 
     Log (Get-i18nString "processing_completed")
+    # 使用 Unicode 转义确保中文正确显示
+    $author = [char]0x9152 + [char]0x6C8F + [char]0x8336  # 酒沏茶
     Write-Host "`n========================================" -ForegroundColor Cyan
-    Write-Host "  Powered by 酒沏茶 | KeyRun" -ForegroundColor Green
+    Write-Host "  Powered by $author | KeyRun" -ForegroundColor Green
     Write-Host "  https://liyangxu1.github.io/keyrun" -ForegroundColor DarkGray
     Write-Host "========================================`n" -ForegroundColor Cyan
     Start-Sleep -s 2
