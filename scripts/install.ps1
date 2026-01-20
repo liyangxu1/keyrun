@@ -1,7 +1,10 @@
 # encoding: utf-8
 
 Clear-Host
+$OutputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::InputEncoding = [System.Text.Encoding]::UTF8
+chcp 65001 | Out-Null
 
 $script:enable_debug = $false
 
