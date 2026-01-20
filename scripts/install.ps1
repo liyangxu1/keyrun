@@ -418,18 +418,20 @@ function Read-Valid_Date([string]$prompt, [string]$default = "2099-12-31")
     return $date
 }
 
-# 显示 JetBrains ASCII Logo
+# 显示 KeyRun ASCII Logo
 function Show-Ascii_Jetbrains
 {
     Write-Host @"
-JJJJJJ   EEEEEEE   TTTTTTTT  BBBBBBB    RRRRRR    AAAAAA    IIIIIIII  NNNN   NN   SSSSSS
-   JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NNNNN  NN  SS
-   JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NN NNN NN   SS
-   JJ    EEEEE        TT     BBBBBBB    RRRRRR    AAAAAA       II     NN  NNNNN    SSSSS
-   JJ    EE           TT     BB    BB   RR  RR    AA  AA       II     NN   NNNN         SS
-JJ JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NN    NNN          SS
- JJJJ    EEEEEEE      TT     BBBBBBB    RR   RR   AA  AA    IIIIIIII  NN    NNN    SSSSSS
+
+ _  __          ____              
+| |/ /___ _   _|  _ \ _   _ _ __  
+| ' // _ \ | | | |_) | | | | '_ \ 
+| . \  __/ |_| |  _ <| |_| | | | |
+|_|\_\___|\__, |_| \_\\__,_|_| |_|
+          |___/                   
 "@ -ForegroundColor Cyan
+    Write-Host "      JetBrains Activation Tool" -ForegroundColor White
+    Write-Host "                        By 酒沏茶`n" -ForegroundColor DarkGray
 }
 
 # 获取属性值（idea.properties）
@@ -891,6 +893,10 @@ function Main
     Process_Vm_Options
 
     Log (Get-i18nString "processing_completed")
+    Write-Host "`n========================================" -ForegroundColor Cyan
+    Write-Host "  Powered by 酒沏茶 | KeyRun" -ForegroundColor Green
+    Write-Host "  https://liyangxu1.github.io/keyrun" -ForegroundColor DarkGray
+    Write-Host "========================================`n" -ForegroundColor Cyan
     Start-Sleep -s 2
     Start-Process "https://liyangxu1.github.io/keyrun"
     $null = Read-Host

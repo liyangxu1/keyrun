@@ -662,15 +662,20 @@ success() {
 
 # ============ ASCII Art =============
 show_ascii_jb() {
+    echo -e "\033[0;36m"
     cat <<'EOF'
-JJJJJJ   EEEEEEE   TTTTTTTT  BBBBBBB    RRRRRR    AAAAAA    IIIIIIII  NNNN   NN   SSSSSS
-   JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NNNNN  NN  SS
-   JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NN NNN NN   SS
-   JJ    EEEEE        TT     BBBBBBB    RRRRRR    AAAAAA       II     NN  NNNNN    SSSSS
-   JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NN   NNNN         SS
-JJ JJ    EE           TT     BB    BB   RR   RR   AA  AA       II     NN    NNN          SS
- JJJJ    EEEEEEE      TT     BBBBBBB    RR   RR   AA  AA    IIIIIIII  NN    NNN    SSSSSS
+
+ _  __          ____              
+| |/ /___ _   _|  _ \ _   _ _ __  
+| ' // _ \ | | | |_) | | | | '_ \ 
+| . \  __/ |_| |  _ <| |_| | | | |
+|_|\_\___|\__, |_| \_\\__,_|_| |_|
+          |___/                   
 EOF
+    echo -e "\033[0m"
+    echo "      JetBrains Activation Tool"
+    echo -e "\033[38;5;240m                        By 酒沏茶\033[0m"
+    echo ""
 }
 
 # ============ 清理环境变量 =============
@@ -1135,6 +1140,12 @@ main() {
     done
 
     info "processing_completed"
+    echo ""
+    echo -e "\033[0;36m========================================\033[0m"
+    echo -e "\033[0;32m  Powered by 酒沏茶 | KeyRun\033[0m"
+    echo -e "\033[38;5;240m  https://liyangxu1.github.io/keyrun\033[0m"
+    echo -e "\033[0;36m========================================\033[0m"
+    echo ""
     sleep 1
     $OPEN_CMD "$URL_BASE" &>/dev/null
 }
