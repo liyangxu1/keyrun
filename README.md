@@ -1,4 +1,12 @@
+<p align="right">
+  简体中文 | <a href="./README.en.md">English</a>
+</p>
+
 # KeyRun 使用说明
+
+本项目仅用于支持学习阶段的学生和研究者进行学习、研究和测试。希望在具备条件和能力之后，优先购买并使用 JetBrains 正版授权，支持优秀工具和软件生态的持续发展。
+
+JetBrains 官网：[https://www.jetbrains.com/](https://www.jetbrains.com/)
 
 KeyRun 是一个面向 JetBrains 系列 IDE 的学习研究工具入口，用于在本机测试环境中快速处理 JetBrains IDE 的相关配置。
 
