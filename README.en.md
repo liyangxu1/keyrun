@@ -58,6 +58,10 @@ Before running it, please understand that this tool modifies JetBrains IDE confi
 - If you have used other similar tools before, you may need to clean up old configuration and restart your computer first.
 - This tool may affect existing IDE startup configuration. Back up important configuration before use.
 
+## License
+
+This project is licensed under the [GNU General Public License v3.0](./LICENSE).
+
 ## Disclaimer
 
 This tool is only for learning, research, and testing. It does not provide any commercial licensing capability and must not be used commercially or to bypass official licensing. Any licensing, compliance, data, configuration, or system risks caused by using this tool are the sole responsibility of the user.
