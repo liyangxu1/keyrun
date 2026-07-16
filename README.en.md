@@ -62,6 +62,10 @@ Before running it, please understand that this tool modifies JetBrains IDE confi
 
 This project is licensed under the [GNU General Public License v3.0](./LICENSE).
 
+## Anti-996 Statement
+
+This project opposes the 996 work schedule. Users must keep the license notice, comply with applicable labor and employment laws, and must not force employees to waive their labor rights.
+
 ## Disclaimer
 
 This tool is only for learning, research, and testing. It does not provide any commercial licensing capability and must not be used commercially or to bypass official licensing. Any licensing, compliance, data, configuration, or system risks caused by using this tool are the sole responsibility of the user.
