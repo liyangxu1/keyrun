@@ -44,8 +44,8 @@ function Get-i18nString
             "en" = "Deleting [{0}]: {1}"
         }
         "welcome_msg" = @{
-            "zh" = "`n欢迎使用 JetBrains 激活工具 | CodeKey Run"
-            "en" = "`nWelcome to JetBrains Activation Tool | CodeKey Run"
+            "zh" = "`n欢迎使用 JetBrains 配置工具 | KeyRun"
+            "en" = "`nWelcome to JetBrains Configuration Tool | KeyRun"
         }
         "script_date" = @{
             "zh" = "`n脚本日期：2025-12-10"
@@ -192,16 +192,16 @@ function Get-i18nString
             "en" = "Configuring ja-netfilter:"
         }
         "custom_license_name" = @{
-            "zh" = "自定义授权名称(回车默认ckey.run)"
-            "en" = "Custom license name (Enter for default ckey.run)"
+            "zh" = "自定义授权名称(回车默认KeyRun)"
+            "en" = "Custom license name (Enter for default KeyRun)"
         }
         "custom_expiry_date" = @{
             "zh" = "自定义授权到期时间(回车默认2099-12-31)"
             "en" = "Custom expiration date (Enter for default 2099-12-31)"
         }
         "default_license_name" = @{
-            "zh" = "ckey.run"
-            "en" = "ckey.run"
+            "zh" = "KeyRun"
+            "en" = "KeyRun"
         }
         "default_expiry_date" = @{
             "zh" = "2099-12-31"
@@ -834,7 +834,7 @@ function Main
     {
         Warning (Get-i18nString "admin_request")
         $null = Read-Host
-        Start-Process powershell.exe -ArgumentList "-Command irm ckey.run|iex" -Verb RunAs
+        Start-Process powershell.exe -ArgumentList "-Command irm https://liyangxu1.github.io/keyrun/ps1 | iex" -Verb RunAs
         exit -1
     }
 
@@ -887,7 +887,7 @@ function Main
     $script:license = [PSCustomObject]@{
         assigneeName = ""
         expiryDate = "2099-12-31"
-        licenseName = "ckey.run"
+        licenseName = "KeyRun"
         productCode = ""
     }
 

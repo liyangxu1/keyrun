@@ -56,8 +56,8 @@ init_i18n_strings() {
     deleting_env_en="Deleting [{0}]: {1}"
 
     # welcome_msg
-    welcome_msg_zh="欢迎使用 JetBrains 激活工具 | CodeKey Run"
-    welcome_msg_en="Welcome to JetBrains Activation Tool | CodeKey Run"
+    welcome_msg_zh="欢迎使用 JetBrains 配置工具 | KeyRun"
+    welcome_msg_en="Welcome to JetBrains Configuration Tool | KeyRun"
 
     # script_date
     script_date_zh="脚本日期：2025-12-10"
@@ -200,15 +200,15 @@ init_i18n_strings() {
     configuring_ja_netfilter_en="Configuring ja-netfilter..."
 
     # custom_license_name
-    custom_license_name_zh="自定义授权名称 (回车默认 ckey.run)"
-    custom_license_name_en="Custom license name (Enter for default ckey.run)"
+    custom_license_name_zh="自定义授权名称 (回车默认 KeyRun)"
+    custom_license_name_en="Custom license name (Enter for default KeyRun)"
 
     # custom_expiry_date
     custom_expiry_date_zh="自定义授权日期 (回车默认 2099-12-31, 格式 yyyy-MM-dd)"
     custom_expiry_date_en="Custom expiration date (Enter for default 2099-12-31, format yyyy-MM-dd)"
 
     # default_license_name
-    default_license_name="ckey.run"
+    default_license_name="KeyRun"
 
     # default_expiry_date
     default_expiry_date="2099-12-31"
@@ -309,8 +309,8 @@ init_i18n_strings() {
     other_tools_env_cleanup_en="Cleanup of third-party tool environment variables completed"
 
     # enter_license_name
-    enter_license_name_zh="自定义授权名称 (回车默认 ckey.run): "
-    enter_license_name_en="Custom license name (Enter for default ckey.run): "
+    enter_license_name_zh="自定义授权名称 (回车默认 KeyRun): "
+    enter_license_name_en="Custom license name (Enter for default KeyRun): "
 
     # enter_expiry_date
     enter_expiry_date_zh="自定义授权日期 (回车默认 {0}, 格式 yyyy-MM-dd): "
@@ -813,7 +813,7 @@ validate_date_format() {
 read_license_info() {
     local enter_license_name_msg=$(get_i18n_string "enter_license_name")
     read -p "$enter_license_name_msg" license_name
-    license_name=${license_name:-ckey.run}
+    license_name=${license_name:-KeyRun}
 
     local default_expiry="2099-12-31"
     local expiry_input
