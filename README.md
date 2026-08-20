@@ -10,6 +10,8 @@ JetBrains 官网：[https://www.jetbrains.com/](https://www.jetbrains.com/)
 
 KeyRun 是一个面向 JetBrains 系列 IDE 的学习研究工具入口，用于在本机测试环境中快速处理 JetBrains IDE 的相关配置。
 
+学习编程的小伙伴可以加入 QQ 群 `920344087`，有不懂的问题可以随时交流。
+
 本工具仅用于学习、研究和测试用途。不得用于商业化场景，不得用于规避正版软件授权，不得用于任何违反软件许可协议、平台规则或当地法律法规的用途。商业使用请购买 JetBrains 官方许可证。
 
 ## 具体作用
