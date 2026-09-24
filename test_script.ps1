@@ -333,6 +333,7 @@ function Error([string]$message)
         }
     }
     Log -message $message -level "ERROR"
+    Write-Host "脚本执行失败。请保留完整错误信息，并在项目的 Issues 中提交问题。或者到QQ群920344087寻求帮助" -ForegroundColor Yellow
 }
 function Success([string]$message)
 {

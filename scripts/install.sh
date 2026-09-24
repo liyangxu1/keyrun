@@ -650,6 +650,7 @@ error()   {
         msg=$(format_string "$msg" "$2" "$3" "$4")
     fi
     log "ERROR" "$msg"
+    printf '%s\n' '脚本执行失败。请保留完整错误信息，并在项目的 Issues 中提交问题。或者到QQ群920344087寻求帮助'
 }
 
 success() {
