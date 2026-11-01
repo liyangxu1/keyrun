@@ -50,6 +50,7 @@ KeyRun 是一个面向 JetBrains 系列 IDE 的学习研究工具入口，用于
 - AppCode
 - DataSpell
 - RustRover
+- Typora
 
 ## 使用前注意
 
