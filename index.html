@@ -318,6 +318,10 @@
             font-size: 16px;
         }
 
+        .command-status {
+            color: var(--muted);
+        }
+
         .quick-commands .command {
             grid-template-columns: 1fr;
         }
@@ -705,6 +709,39 @@
                     <div class="command">
                         <code>curl -fsSL https://liyangxu1.github.io/keyrun/scripts/install.sh | bash</code>
                         <button class="copy-btn" type="button" data-copy="curl -fsSL https://liyangxu1.github.io/keyrun/scripts/install.sh | bash">复制命令</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="quick-commands" aria-labelledby="typoraTitle">
+            <h2 id="typoraTitle">Typora</h2>
+            <p>在 macOS 上执行前，请保存文档并退出 Typora。使用自定义路径时，请将命令中的应用路径改为实际位置。</p>
+            <div class="command-grid">
+                <article class="command-card">
+                    <h3>Windows</h3>
+                    <p class="command-status">待开发</p>
+                </article>
+                <article class="command-card">
+                    <h3>Linux</h3>
+                    <p class="command-status">待开发</p>
+                </article>
+                <article class="command-card">
+                    <h3>macOS</h3>
+                    <p>默认路径</p>
+                    <div class="command">
+                        <code>(script=$(mktemp -t keyrun-typora) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fL --retry 2 https://raw.githubusercontent.com/liyangxu1/keyrun/codex/typora-shell-tool/scripts/typora.sh -o &quot;$script&quot; &amp;&amp; /bin/bash &quot;$script&quot;)</code>
+                        <button class="copy-btn" type="button" data-copy="(script=$(mktemp -t keyrun-typora) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fL --retry 2 https://raw.githubusercontent.com/liyangxu1/keyrun/codex/typora-shell-tool/scripts/typora.sh -o &quot;$script&quot; &amp;&amp; /bin/bash &quot;$script&quot;)">复制命令</button>
+                    </div>
+                    <p>自定义路径</p>
+                    <div class="command">
+                        <code>(script=$(mktemp -t keyrun-typora) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fL --retry 2 https://raw.githubusercontent.com/liyangxu1/keyrun/codex/typora-shell-tool/scripts/typora.sh -o &quot;$script&quot; &amp;&amp; /bin/bash &quot;$script&quot; --app &quot;$HOME/Applications/Typora.app&quot;)</code>
+                        <button class="copy-btn" type="button" data-copy="(script=$(mktemp -t keyrun-typora) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fL --retry 2 https://raw.githubusercontent.com/liyangxu1/keyrun/codex/typora-shell-tool/scripts/typora.sh -o &quot;$script&quot; &amp;&amp; /bin/bash &quot;$script&quot; --app &quot;$HOME/Applications/Typora.app&quot;)">复制命令</button>
+                    </div>
+                    <p>恢复备份</p>
+                    <div class="command">
+                        <code>(script=$(mktemp -t keyrun-typora) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fL --retry 2 https://raw.githubusercontent.com/liyangxu1/keyrun/codex/typora-shell-tool/scripts/typora.sh -o &quot;$script&quot; &amp;&amp; /bin/bash &quot;$script&quot; --app &quot;$HOME/Applications/Typora.app&quot; --restore)</code>
+                        <button class="copy-btn" type="button" data-copy="(script=$(mktemp -t keyrun-typora) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fL --retry 2 https://raw.githubusercontent.com/liyangxu1/keyrun/codex/typora-shell-tool/scripts/typora.sh -o &quot;$script&quot; &amp;&amp; /bin/bash &quot;$script&quot; --app &quot;$HOME/Applications/Typora.app&quot; --restore)">复制命令</button>
                     </div>
                 </article>
             </div>
