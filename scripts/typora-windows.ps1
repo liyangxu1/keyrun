@@ -5,7 +5,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$release = 'https://github.com/liyangxu1/keyrun/releases/download/typora-desktop-v0.1.0'
+$release = 'https://github.com/liyangxu1/keyrun/releases/download/typora-desktop'
 $work = Join-Path ([IO.Path]::GetTempPath()) ("keyrun-typora-" + [guid]::NewGuid())
 try {
     $arch = $env:PROCESSOR_ARCHITECTURE

@@ -2,11 +2,19 @@ name: Build Typora desktop tools
 
 on:
   push:
-    tags: ['typora-desktop-v*']
+    branches: [main]
+    paths:
+      - 'tools/typora-desktop/**'
+      - 'scripts/typora-linux.sh'
+      - 'scripts/typora-windows.ps1'
+      - '.github/workflows/typora-desktop.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: typora-desktop-${{ github.ref }}
 
 jobs:
   build:
@@ -37,7 +45,7 @@ jobs:
           path: dist/
 
   release:
-    if: startsWith(github.ref, 'refs/tags/typora-desktop-v')
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -47,9 +55,18 @@ jobs:
         with:
           name: typora-desktop
           path: dist
-      - name: 发布对应标签的二进制文件
+      - name: 更新固定下载地址
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$RELEASE_TAG" --verify-tag --prerelease --title "$RELEASE_TAG" dist/*
+        run: |
+          set -eu
+          tag=typora-desktop
+          notes="构建提交：$GITHUB_SHA"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" dist/typora-* --clobber
+            gh release upload "$tag" dist/SHA256SUMS --clobber
+            gh release edit "$tag" --notes "$notes"
+          else
+            gh release create "$tag" --target "$GITHUB_SHA" --prerelease --title 'Typora Windows / Linux' --notes "$notes" dist/*
+          fi

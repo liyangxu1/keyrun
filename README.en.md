@@ -95,18 +95,18 @@ bash typora.sh --app "$HOME/Applications/Typora.app" --restore
 
 ## Typora (Windows and Linux)
 
-The experimental Windows and Linux tool is an independent implementation informed by [Hapora](https://github.com/wpy030414/hapora). It is distributed as a prebuilt executable and requires no Node.js, pnpm, or Go installation. The commands below require the GitHub Release for `typora-desktop-v0.1.0` to be published first.
+The experimental Windows and Linux tool is an independent implementation informed by [Hapora](https://github.com/wpy030414/hapora). It is distributed as a prebuilt executable and requires no Node.js, pnpm, or Go installation. GitHub Actions publishes the builds to one [Typora Release](https://github.com/liyangxu1/keyrun/releases/tag/typora-desktop), and the launcher selects the file for your system and architecture. The commands below become available after the first successful release.
 
 Save your documents and quit Typora. On Windows, run this in PowerShell:
 
 ```powershell
-& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-windows.ps1').Content))
+& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-windows.ps1').Content))
 ```
 
 On Linux, run this in a Bash terminal:
 
 ```bash
-(script=$(mktemp) && trap 'rm -f "$script"' EXIT && curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-linux.sh -o "$script" && bash "$script")
+(script=$(mktemp) && trap 'rm -f "$script"' EXIT && curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-linux.sh -o "$script" && bash "$script")
 ```
 
 - Testing targets stable builds from the [official Typora website](https://typora.io/). On Windows, use the official x64 or ARM64 installer. On Linux, use the official `.deb` package or [official APT repository](https://support.typora.io/Typora-on-Linux/). Install Typora directly from these sources without building it yourself.

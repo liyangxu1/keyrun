@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-release='https://github.com/liyangxu1/keyrun/releases/download/typora-desktop-v0.1.0'
+release='https://github.com/liyangxu1/keyrun/releases/download/typora-desktop'
 case "$(uname -m)" in
     x86_64) asset=typora-linux-amd64 ;;
     aarch64|arm64) asset=typora-linux-arm64 ;;
