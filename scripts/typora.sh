@@ -4,6 +4,19 @@
 set -euo pipefail
 umask 077
 
+show_keyrun_banner() {
+    printf '\033[0;36m\n'
+    cat <<'EOF'
+ _  __          ____
+| |/ /___ _   _|  _ \ _   _ _ __
+| ' // _ \ | | | |_) | | | | '_ \
+| . \  __/ |_| |  _ <| |_| | | | |
+|_|\_\___|\__, |_| \_\\__,_|_| |_|
+          |___/
+EOF
+    printf '\033[0m\n      Typora 工具 | KeyRun\n\033[38;5;240m                        By 酒沏茶\033[0m\n\n'
+}
+
 usage() {
     cat <<'EOF'
 用法：bash typora.sh [--app /Applications/Typora.app] [--restore]
@@ -155,4 +168,7 @@ main() {
     trap - EXIT INT TERM
 }
 
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then main "$@"; fi
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+    show_keyrun_banner
+    main "$@"
+fi

@@ -318,10 +318,6 @@
             font-size: 16px;
         }
 
-        .command-status {
-            color: var(--muted);
-        }
-
         .quick-commands .command {
             grid-template-columns: 1fr;
         }
@@ -716,15 +712,21 @@
 
         <section class="quick-commands" aria-labelledby="typoraTitle">
             <h2 id="typoraTitle">Typora</h2>
-            <p>在 macOS 上执行前，请保存文档并退出 Typora。</p>
+            <p>执行前请保存文档并退出 Typora。Windows 和 Linux 为实验版，需等首次构建发布后使用。</p>
             <div class="command-grid">
                 <article class="command-card">
                     <h3>Windows</h3>
-                    <p class="command-status">待开发</p>
+                    <div class="command">
+                        <code>&amp; ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-windows.ps1').Content))</code>
+                        <button class="copy-btn" type="button" data-copy="&amp; ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-windows.ps1').Content))">复制命令</button>
+                    </div>
                 </article>
                 <article class="command-card">
                     <h3>Linux</h3>
-                    <p class="command-status">待开发</p>
+                    <div class="command">
+                        <code>(script=$(mktemp) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-linux.sh -o &quot;$script&quot; &amp;&amp; bash &quot;$script&quot;)</code>
+                        <button class="copy-btn" type="button" data-copy="(script=$(mktemp) &amp;&amp; trap 'rm -f &quot;$script&quot;' EXIT &amp;&amp; curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-linux.sh -o &quot;$script&quot; &amp;&amp; bash &quot;$script&quot;)">复制命令</button>
+                    </div>
                 </article>
                 <article class="command-card">
                     <h3>macOS</h3>

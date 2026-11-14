@@ -5,6 +5,20 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+Write-Host @'
+
+ _  __          ____
+| |/ /___ _   _|  _ \ _   _ _ __
+| ' // _ \ | | | |_) | | | | '_ \
+| . \  __/ |_| |  _ <| |_| | | | |
+|_|\_\___|\__, |_| \_\\__,_|_| |_|
+          |___/
+'@ -ForegroundColor Cyan
+$author = [string][char]0x9152 + [char]0x6C8F + [char]0x8336
+$tool = -join ([char]0x5DE5, [char]0x5177)
+Write-Host "      Typora $tool | KeyRun" -ForegroundColor White
+Write-Host "                        By $author`n" -ForegroundColor DarkGray
+
 $release = 'https://github.com/liyangxu1/keyrun/releases/download/typora-desktop'
 $work = Join-Path ([IO.Path]::GetTempPath()) ("keyrun-typora-" + [guid]::NewGuid())
 try {

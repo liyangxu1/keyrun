@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+show_keyrun_banner() {
+    printf '\033[0;36m\n'
+    cat <<'EOF'
+ _  __          ____
+| |/ /___ _   _|  _ \ _   _ _ __
+| ' // _ \ | | | |_) | | | | '_ \
+| . \  __/ |_| |  _ <| |_| | | | |
+|_|\_\___|\__, |_| \_\\__,_|_| |_|
+          |___/
+EOF
+    printf '\033[0m\n      Typora 工具 | KeyRun\n\033[38;5;240m                        By 酒沏茶\033[0m\n\n'
+}
+
+show_keyrun_banner
+
 release='https://github.com/liyangxu1/keyrun/releases/download/typora-desktop'
 case "$(uname -m)" in
     x86_64) asset=typora-linux-amd64 ;;
