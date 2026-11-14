@@ -8,6 +8,10 @@
 
 JetBrains 官网：[https://www.jetbrains.com/](https://www.jetbrains.com/)
 
+Typora 相关内容仅用于支持学习阶段的学生和研究者进行学习、研究和测试。请遵守 Typora 的软件许可条款，具备条件后请购买并使用 Typora 正版授权，支持软件的持续开发。
+
+Typora 官网：[https://typora.io/](https://typora.io/)
+
 KeyRun 是一个面向 JetBrains 系列 IDE 的学习研究工具入口，用于在本机测试环境中快速处理 JetBrains IDE 的相关配置。
 
 学习编程的小伙伴可以加入 QQ 群 `920344087`，有不懂的问题可以随时交流。
@@ -88,6 +92,28 @@ bash typora.sh --app "$HOME/Applications/Typora.app" --restore
 - 仅支持二进制中包含上游原始公钥的版本，更新后不保证兼容；找不到公钥时终止且不修改应用。
 - `--restore` 恢复备份的应用文件，不修改许可证偏好设置；不要在升级 Typora 后用旧版本备份覆盖新版本。
 - 已通过临时文件测试验证字节长度、多个公钥替换、中文签名和异常输入，未对真实 Typora 执行激活验证。
+
+## Typora（Windows 和 Linux）
+
+Windows 和 Linux 实验版参考 [Hapora](https://github.com/wpy030414/hapora) 的架构独立实现。工具以预编译程序分发，无需安装 Node.js、pnpm 或 Go。以下命令需等 `typora-desktop-v0.1.0` 对应的 GitHub Release 发布后才可使用。
+
+保存文档并退出 Typora。Windows 在 PowerShell 中执行：
+
+```powershell
+& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-windows.ps1').Content))
+```
+
+Linux 在 Bash 终端中执行：
+
+```bash
+(script=$(mktemp) && trap 'rm -f "$script"' EXIT && curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-linux.sh -o "$script" && bash "$script")
+```
+
+- 测试目标为 [Typora 官网](https://typora.io/) 的稳定版。Windows 使用官网的 x64 或 ARM64 安装包，Linux 使用官网的 `.deb` 安装包或 [官方 APT 源](https://support.typora.io/Typora-on-Linux/)。直接安装即可，无需自行构建 Typora。
+- KeyRun 实验版提供 amd64 和 arm64 构建，要求 Typora 的安装目录可写。不支持 32 位 Windows，也不支持 Snap、AppImage 等只读安装。
+- Windows 安装目录不可写时，使用同一账户的管理员 PowerShell。Linux 以桌面用户运行，仅在写入系统安装目录时调用 `sudo`。
+- 下载入口脚本后，Windows 可传入 `-Dir`、`-Status` 或 `-Restore`，Linux 对应参数为 `--dir`、`--status` 和 `--restore`。
+- 写入前会备份应用包和原许可证记录。应用升级后不能用旧备份覆盖新版本。完成后请手动启动 Typora 检查，当前实验版尚未在 Windows 或 Linux 的真实 Typora 安装上验证。
 
 ## 许可证
 
