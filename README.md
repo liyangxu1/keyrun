@@ -95,18 +95,18 @@ bash typora.sh --app "$HOME/Applications/Typora.app" --restore
 
 ## Typora（Windows 和 Linux）
 
-Windows 和 Linux 实验版参考 [Hapora](https://github.com/wpy030414/hapora) 的架构独立实现。工具以预编译程序分发，无需安装 Node.js、pnpm 或 Go。以下命令需等 `typora-desktop-v0.1.0` 对应的 GitHub Release 发布后才可使用。
+Windows 和 Linux 实验版参考 [Hapora](https://github.com/wpy030414/hapora) 的架构独立实现。工具以预编译程序分发，无需安装 Node.js、pnpm 或 Go。GitHub Actions 将构建产物发布到同一个 [Typora Release](https://github.com/liyangxu1/keyrun/releases/tag/typora-desktop)，启动脚本自动选择适合当前系统和架构的文件。首次构建发布成功后即可使用以下命令。
 
 保存文档并退出 Typora。Windows 在 PowerShell 中执行：
 
 ```powershell
-& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-windows.ps1').Content))
+& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-windows.ps1').Content))
 ```
 
 Linux 在 Bash 终端中执行：
 
 ```bash
-(script=$(mktemp) && trap 'rm -f "$script"' EXIT && curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-linux.sh -o "$script" && bash "$script")
+(script=$(mktemp) && trap 'rm -f "$script"' EXIT && curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/main/scripts/typora-linux.sh -o "$script" && bash "$script")
 ```
 
 - 测试目标为 [Typora 官网](https://typora.io/) 的稳定版。Windows 使用官网的 x64 或 ARM64 安装包，Linux 使用官网的 `.deb` 安装包或 [官方 APT 源](https://support.typora.io/Typora-on-Linux/)。直接安装即可，无需自行构建 Typora。
