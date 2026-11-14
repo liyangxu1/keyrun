@@ -1,0 +1,55 @@
+name: Build Typora desktop tools
+
+on:
+  push:
+    tags: ['typora-desktop-v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/typora-desktop/go.mod
+          cache: false
+      - name: 测试并构建发布文件
+        working-directory: tools/typora-desktop
+        env:
+          CGO_ENABLED: '0'
+        run: |
+          set -eu
+          go test ./...
+          mkdir -p ../../dist
+          for arch in amd64 arm64; do
+            GOOS=windows GOARCH="$arch" go build -trimpath -o "../../dist/typora-windows-$arch.exe" .
+            GOOS=linux GOARCH="$arch" go build -trimpath -o "../../dist/typora-linux-$arch" .
+          done
+          cd ../../dist
+          sha256sum typora-* > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: typora-desktop
+          path: dist/
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/typora-desktop-v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: typora-desktop
+          path: dist
+      - name: 发布对应标签的二进制文件
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: gh release create "$RELEASE_TAG" --verify-tag --prerelease --title "$RELEASE_TAG" dist/*

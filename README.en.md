@@ -8,6 +8,10 @@ This project is intended only to support students and researchers during the lea
 
 JetBrains official website: [https://www.jetbrains.com/](https://www.jetbrains.com/)
 
+The Typora material is intended to support students and researchers in learning, research, and testing. Please follow Typora's software license terms and purchase an official Typora license when you are able to support its continued development.
+
+Typora official website: [https://typora.io/](https://typora.io/)
+
 KeyRun is a learning and research tool entry for JetBrains IDEs. It is used to quickly handle related JetBrains IDE configuration in a local test environment.
 
 If you are learning to code, join QQ group `920344087` to ask questions and discuss programming.
@@ -88,6 +92,28 @@ bash typora.sh --app "$HOME/Applications/Typora.app" --restore
 - Only versions that contain the original upstream public key are supported. Compatibility after an update is not guaranteed. If the key is missing, the script exits without modifying the app.
 - `--restore` restores the backed-up app files and leaves license preferences intact. Do not overwrite an upgraded installation with a backup from an older version.
 - Tests with temporary files verified byte lengths, replacement of multiple public keys, signing with Chinese text, and invalid inputs. Activation was not verified against a real Typora installation.
+
+## Typora (Windows and Linux)
+
+The experimental Windows and Linux tool is an independent implementation informed by [Hapora](https://github.com/wpy030414/hapora). It is distributed as a prebuilt executable and requires no Node.js, pnpm, or Go installation. The commands below require the GitHub Release for `typora-desktop-v0.1.0` to be published first.
+
+Save your documents and quit Typora. On Windows, run this in PowerShell:
+
+```powershell
+& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-windows.ps1').Content))
+```
+
+On Linux, run this in a Bash terminal:
+
+```bash
+(script=$(mktemp) && trap 'rm -f "$script"' EXIT && curl -fsSL https://raw.githubusercontent.com/liyangxu1/keyrun/typora-desktop-v0.1.0/scripts/typora-linux.sh -o "$script" && bash "$script")
+```
+
+- Testing targets stable builds from the [official Typora website](https://typora.io/). On Windows, use the official x64 or ARM64 installer. On Linux, use the official `.deb` package or [official APT repository](https://support.typora.io/Typora-on-Linux/). Install Typora directly from these sources without building it yourself.
+- The experimental KeyRun tool provides amd64 and arm64 builds and requires a writable Typora installation directory. It does not support 32-bit Windows or read-only installations such as Snap and AppImage.
+- If the installation directory is not writable on Windows, use an administrator PowerShell under the same account. On Linux, run as the desktop user. The tool uses `sudo` only for operations in the system installation directory.
+- After downloading the launcher script, use `-Dir`, `-Status`, or `-Restore` on Windows. The Linux equivalents are `--dir`, `--status`, and `--restore`.
+- The tool backs up the application archive and existing license record before writing. Never restore an old backup over an upgraded installation. Start Typora manually afterward to check the result. This experimental build has not been verified against a real Typora installation on Windows or Linux.
 
 ## License
 
